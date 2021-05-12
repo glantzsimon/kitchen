@@ -1,0 +1,11 @@
+bin
+obj
+*.tmp
+*.user
+*.dll
+*.suo
+packages
+logs
+.vs
+upload
+publish
