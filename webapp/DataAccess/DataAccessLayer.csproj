@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20948D36-2ABE-4429-B175-AF781A5F6CB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>K9.DataAccessLayer</RootNamespace>
+    <AssemblyName>K9.DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integration|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Integration\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\Production\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production2|AnyCPU'">
+    <OutputPath>bin\Production2\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions, Version=5.0.1.16, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="K9.Base.DataAccessLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\K9.Base.DataAccessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="K9.Base.Globalisation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\K9.Base.Globalisation.dll</HintPath>
+    </Reference>
+    <Reference Include="K9.Base.WebApplication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\K9.Base.WebApplication.dll</HintPath>
+    </Reference>
+    <Reference Include="K9.SharedLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\K9.SharedLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Collections.Specialized.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.ComponentModel.TypeConverter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.TraceSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Diagnostics.TraceSource.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.DataAccessLayer.2.0.0.166\lib\net461\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.SharedLibrary.2.0.0.166\lib\net461\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\K9.Base.WebApplication.2.0.0.166\lib\net461\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\DatabaseInitialiser.cs" />
+    <Compile Include="Database\Db.cs" />
+    <Compile Include="Database\Seeds\MembershipOptionsSeeder.cs" />
+    <Compile Include="Database\Seeds\PermissionsSeeder.cs" />
+    <Compile Include="Enums\EConsultationDuration.cs" />
+    <Compile Include="Helpers\Methods.cs" />
+    <Compile Include="Migrations\202007211011153_July2020.cs" />
+    <Compile Include="Migrations\202007211011153_July2020.Designer.cs">
+      <DependentUpon>202007211011153_July2020.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012121417460_20201212_2117.cs" />
+    <Compile Include="Migrations\202012121417460_20201212_2117.Designer.cs">
+      <DependentUpon>202012121417460_20201212_2117.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012131750303_DbUpdate.cs" />
+    <Compile Include="Migrations\202012131750303_DbUpdate.Designer.cs">
+      <DependentUpon>202012131750303_DbUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012131759232_DbUpdate1.cs" />
+    <Compile Include="Migrations\202012131759232_DbUpdate1.Designer.cs">
+      <DependentUpon>202012131759232_DbUpdate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012132059496_CleanUp.cs" />
+    <Compile Include="Migrations\202012132059496_CleanUp.Designer.cs">
+      <DependentUpon>202012132059496_CleanUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012160145333_DbUpdate2.cs" />
+    <Compile Include="Migrations\202012160145333_DbUpdate2.Designer.cs">
+      <DependentUpon>202012160145333_DbUpdate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012181520116_AddMemberships.cs" />
+    <Compile Include="Migrations\202012181520116_AddMemberships.Designer.cs">
+      <DependentUpon>202012181520116_AddMemberships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012212052366_GenderToUser.cs" />
+    <Compile Include="Migrations\202012212052366_GenderToUser.Designer.cs">
+      <DependentUpon>202012212052366_GenderToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012252346046_MembershipIsDeactivated.cs" />
+    <Compile Include="Migrations\202012252346046_MembershipIsDeactivated.Designer.cs">
+      <DependentUpon>202012252346046_MembershipIsDeactivated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261621485_AddUserCredits.cs" />
+    <Compile Include="Migrations\202012261621485_AddUserCredits.Designer.cs">
+      <DependentUpon>202012261621485_AddUserCredits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101102148124_AddPromoCodes.cs" />
+    <Compile Include="Migrations\202101102148124_AddPromoCodes.Designer.cs">
+      <DependentUpon>202101102148124_AddPromoCodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101102224178_UpdatePromoCode.cs" />
+    <Compile Include="Migrations\202101102224178_UpdatePromoCode.Designer.cs">
+      <DependentUpon>202101102224178_UpdatePromoCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101102315127_UpdatePromoCode1.cs" />
+    <Compile Include="Migrations\202101102315127_UpdatePromoCode1.Designer.cs">
+      <DependentUpon>202101102315127_UpdatePromoCode1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101111639061_AddPriceToPromoCode.cs" />
+    <Compile Include="Migrations\202101111639061_AddPriceToPromoCode.Designer.cs">
+      <DependentUpon>202101111639061_AddPriceToPromoCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120128227_AddConsultations.cs" />
+    <Compile Include="Migrations\202101120128227_AddConsultations.Designer.cs">
+      <DependentUpon>202101120128227_AddConsultations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120755239_AddConsultationCompletedOn.cs" />
+    <Compile Include="Migrations\202101120755239_AddConsultationCompletedOn.Designer.cs">
+      <DependentUpon>202101120755239_AddConsultationCompletedOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101162058510_AddNameToProfileReadings.cs" />
+    <Compile Include="Migrations\202101162058510_AddNameToProfileReadings.Designer.cs">
+      <DependentUpon>202101162058510_AddNameToProfileReadings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102030138393_AddHideSexuality.cs" />
+    <Compile Include="Migrations\202102030138393_AddHideSexuality.Designer.cs">
+      <DependentUpon>202102030138393_AddHideSexuality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Consultation.cs" />
+    <Compile Include="Models\PromoCode.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\MembershipOption.cs" />
+    <Compile Include="Models\UserCompatibilityReading.cs" />
+    <Compile Include="Models\UserConsultation.cs" />
+    <Compile Include="Models\UserPromoCode.cs" />
+    <Compile Include="Models\UserCreditPack.cs" />
+    <Compile Include="Models\UserProfileReading.cs" />
+    <Compile Include="Models\UserMembership.cs" />
+    <Compile Include="Models\Donation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Globalisation\Globalisation.csproj">
+      <Project>{37795dc6-45c9-458c-a3a5-48da6534c35c}</Project>
+      <Name>Globalisation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007211011153_July2020.resx">
+      <DependentUpon>202007211011153_July2020.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012121417460_20201212_2117.resx">
+      <DependentUpon>202012121417460_20201212_2117.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131750303_DbUpdate.resx">
+      <DependentUpon>202012131750303_DbUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131759232_DbUpdate1.resx">
+      <DependentUpon>202012131759232_DbUpdate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012132059496_CleanUp.resx">
+      <DependentUpon>202012132059496_CleanUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012160145333_DbUpdate2.resx">
+      <DependentUpon>202012160145333_DbUpdate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012181520116_AddMemberships.resx">
+      <DependentUpon>202012181520116_AddMemberships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012212052366_GenderToUser.resx">
+      <DependentUpon>202012212052366_GenderToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012252346046_MembershipIsDeactivated.resx">
+      <DependentUpon>202012252346046_MembershipIsDeactivated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261621485_AddUserCredits.resx">
+      <DependentUpon>202012261621485_AddUserCredits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101102148124_AddPromoCodes.resx">
+      <DependentUpon>202101102148124_AddPromoCodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101102224178_UpdatePromoCode.resx">
+      <DependentUpon>202101102224178_UpdatePromoCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101102315127_UpdatePromoCode1.resx">
+      <DependentUpon>202101102315127_UpdatePromoCode1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101111639061_AddPriceToPromoCode.resx">
+      <DependentUpon>202101111639061_AddPriceToPromoCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120128227_AddConsultations.resx">
+      <DependentUpon>202101120128227_AddConsultations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120755239_AddConsultationCompletedOn.resx">
+      <DependentUpon>202101120755239_AddConsultationCompletedOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101162058510_AddNameToProfileReadings.resx">
+      <DependentUpon>202101162058510_AddNameToProfileReadings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102030138393_AddHideSexuality.resx">
+      <DependentUpon>202102030138393_AddHideSexuality.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
