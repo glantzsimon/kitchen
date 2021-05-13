@@ -249,6 +249,10 @@
     <Compile Include="Database\Db.cs" />
     <Compile Include="Database\Seeds\PermissionsSeeder.cs" />
     <Compile Include="Helpers\Methods.cs" />
+    <Compile Include="Migrations\202105130556103_InitialCreate.cs" />
+    <Compile Include="Migrations\202105130556103_InitialCreate.Designer.cs">
+      <DependentUpon>202105130556103_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -260,13 +264,17 @@
     <Folder Include="Attributes\" />
     <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Globalisation\Globalisation.csproj">
       <Project>{37795dc6-45c9-458c-a3a5-48da6534c35c}</Project>
       <Name>Globalisation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202105130556103_InitialCreate.resx">
+      <DependentUpon>202105130556103_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
