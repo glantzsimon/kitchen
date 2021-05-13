@@ -301,10 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit\Models\NineStarKiModelTests.cs" />
     <Compile Include="Unit\Models\PersonModelTests.cs" />
-    <Compile Include="Unit\Services\MembershipServiceTests.cs" />
-    <Compile Include="Unit\Services\NineStarKiServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -316,6 +313,7 @@
     <Folder Include="Unit\Controllers\" />
     <Folder Include="Unit\Extensions\" />
     <Folder Include="Unit\Helpers\" />
+    <Folder Include="Unit\Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccessLayer.csproj">

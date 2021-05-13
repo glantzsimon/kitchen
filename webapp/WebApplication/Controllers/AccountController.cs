@@ -8,7 +8,6 @@ using K9.Base.WebApplication.Filters;
 using K9.Base.WebApplication.Models;
 using K9.Base.WebApplication.Options;
 using K9.Base.WebApplication.Services;
-using K9.DataAccessLayer.Models;
 using K9.SharedLibrary.Authentication;
 using K9.SharedLibrary.Extensions;
 using K9.SharedLibrary.Helpers;
@@ -26,32 +25,28 @@ using WebMatrix.WebData;
 
 namespace K9.WebApplication.Controllers
 {
-    public partial class AccountController : BaseNineStarKiController
+    public partial class AccountController : BaseGcController
     {
         private readonly IRepository<User> _userRepository;
         private readonly ILogger _logger;
         private readonly IAccountService _accountService;
         private readonly IAuthentication _authentication;
         private readonly IFacebookService _facebookService;
-        private readonly IMembershipService _membershipService;
         private readonly IContactService _contactService;
         private readonly IUserService _userService;
-        private readonly IRepository<PromoCode> _promoCodesRepository;
         private readonly IRecaptchaService _recaptchaService;
         private readonly RecaptchaConfiguration _recaptchaConfig;
 
-        public AccountController(IRepository<User> userRepository, ILogger logger, IMailer mailer, IOptions<WebsiteConfiguration> websiteConfig, IDataSetsHelper dataSetsHelper, IRoles roles, IAccountService accountService, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IFacebookService facebookService, IMembershipService membershipService, IContactService contactService, IUserService userService, IRepository<PromoCode> promoCodesRepository, IOptions<RecaptchaConfiguration> recaptchaConfig, IRecaptchaService recaptchaService)
-            : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper, membershipService)
+        public AccountController(IRepository<User> userRepository, ILogger logger, IMailer mailer, IOptions<WebsiteConfiguration> websiteConfig, IDataSetsHelper dataSetsHelper, IRoles roles, IAccountService accountService, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IFacebookService facebookService, IContactService contactService, IUserService userService, IOptions<RecaptchaConfiguration> recaptchaConfig, IRecaptchaService recaptchaService)
+            : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper)
         {
             _userRepository = userRepository;
             _logger = logger;
             _accountService = accountService;
             _authentication = authentication;
             _facebookService = facebookService;
-            _membershipService = membershipService;
             _contactService = contactService;
             _userService = userService;
-            _promoCodesRepository = promoCodesRepository;
             _recaptchaService = recaptchaService;
             _recaptchaConfig = recaptchaConfig.Value;
 
@@ -134,20 +129,13 @@ namespace K9.WebApplication.Controllers
                 });
 
                 user.Id = _userRepository.Find(e => e.Username == user.Username).FirstOrDefault()?.Id ?? 0;
-
-                if (user.Id > 0)
-                {
-                    _membershipService.CreateFreeMembership(user.Id);
-                }
-
+                
                 if (regResult.IsSuccess)
                 {
                     if (isNewUser)
                     {
                         return RedirectToAction("FacebookPostRegsiter", "Account", new { username = user.Username });
                     }
-
-                    return ProcessSavedResults();
                 }
 
                 result.Errors.AddRange(regResult.Errors);
@@ -197,26 +185,7 @@ namespace K9.WebApplication.Controllers
             try
             {
                 var user = _userRepository.Find(e => e.Username == model.RegisterModel.UserName).First();
-
-                if (!string.IsNullOrEmpty(model.PromoCode))
-                {
-                    if (_userService.CheckIfPromoCodeIsUsed(model.PromoCode))
-                    {
-                        ModelState.AddModelError("PromoCode", Globalisation.Dictionary.PromoCodeInUse);
-                        return View(model);
-                    }
-
-                    try
-                    {
-                        _userService.UsePromoCode(user.Id, model.PromoCode);
-                        _membershipService.ProcessPurchaseWithPromoCode(user.Id, model.PromoCode);
-                    }
-                    catch (Exception e)
-                    {
-                        ModelState.AddModelError("PromoCode", e.Message);
-                    }
-                }
-
+                
                 // Update user information
                 user.FirstName = model.RegisterModel.FirstName;
                 user.LastName = model.RegisterModel.LastName;
@@ -227,7 +196,7 @@ namespace K9.WebApplication.Controllers
 
                 _userRepository.Update(user);
 
-                return ProcessSavedResults();
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception e)
             {
@@ -235,25 +204,7 @@ namespace K9.WebApplication.Controllers
                 return View(model);
             }
         }
-
-        public ActionResult ProcessSavedResults()
-        {
-            // Redirect to previous profile or compatibility reading if set
-            var lastCompatibility = SessionHelper.GetLastCompatibility(true, false);
-            var lastProfile = SessionHelper.GetLastProfile(true, false);
-
-            if (lastCompatibility != null)
-            {
-                return RedirectToAction("RetrieveLastCompatibility", "NineStarKi");
-            }
-            if (lastProfile != null)
-            {
-                return RedirectToAction("RetrieveLastProfile", "NineStarKi");
-            }
-
-            return RedirectToAction("Index", "Home");
-        }
-
+        
         public ActionResult AccountLocked()
         {
             return View();
@@ -266,7 +217,7 @@ namespace K9.WebApplication.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Register(string promoCode = null)
+        public ActionResult Register()
         {
             ViewBag.RecaptchaSiteKey = _recaptchaConfig.RecaptchaSiteKey;
 
@@ -275,29 +226,13 @@ namespace K9.WebApplication.Controllers
                 WebSecurity.Logout();
             }
 
-            if (promoCode != null)
-            {
-                try
-                {
-                    if (_userService.CheckIfPromoCodeIsUsed(promoCode))
-                    {
-                        ModelState.AddModelError("PromoCode", Globalisation.Dictionary.PromoCodeInUse);
-                    };
-                }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError("PromoCode", e.Message);
-                }
-            }
-
             return View(new RegisterViewModel
             {
                 RegisterModel = new UserAccount.RegisterModel
                 {
                     Gender = Methods.GetRandomGender(),
                     BirthDate = DateTime.Today.AddYears(-27)
-                },
-                PromoCode = promoCode
+                }
             });
         }
 
@@ -327,30 +262,6 @@ namespace K9.WebApplication.Controllers
 
                 if (result.IsSuccess)
                 {
-                    var user = _userRepository.Find(e => e.Username == model.RegisterModel.UserName).FirstOrDefault();
-
-                    if (!string.IsNullOrEmpty(model.PromoCode))
-                    {
-                        if (user?.Id > 0)
-                        {
-                            try
-                            {
-                                _userService.UsePromoCode(user.Id, model.PromoCode);
-                            }
-                            catch (Exception e)
-                            {
-                                ModelState.AddModelError("PromoCode", e.Message);
-                            }
-
-                            _membershipService.ProcessPurchaseWithPromoCode(user.Id, model.PromoCode);
-                        }
-                        else
-                        {
-                            _logger.Error("AccountController => Register => Promo code used but UserId is 0");
-                            return RedirectToAction("AccountCreated", "Account", new { additionalError = Globalisation.Dictionary.PromoCodeNotUsed });
-                        }
-                    }
-
                     return RedirectToAction("AccountCreated", "Account");
                 }
 
@@ -413,8 +324,7 @@ namespace K9.WebApplication.Controllers
             var user = _userRepository.Find(u => u.Username == User.Identity.Name).FirstOrDefault();
             return View(new MyAccountViewModel
             {
-                User = user,
-                Membership = _membershipService.GetActiveUserMembership(user?.Id)
+                User = user
             });
         }
 
@@ -434,26 +344,6 @@ namespace K9.WebApplication.Controllers
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(model.PromoCode))
-                    {
-                        try
-                        {
-                            if (_userService.CheckIfPromoCodeIsUsed(model.PromoCode))
-                            {
-                                ModelState.AddModelError("PromoCode", Globalisation.Dictionary.PromoCodeInUse);
-                            }
-                            else
-                            {
-                                _userService.UsePromoCode(model.User.Id, model.PromoCode);
-                                _membershipService.ProcessPurchaseWithPromoCode(model.User.Id, model.PromoCode);
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            ModelState.AddModelError("PromoCode", e.Message);
-                        }
-                    }
-
                     _userRepository.Update(model.User);
 
                     ViewBag.IsPopupAlert = true;
@@ -473,9 +363,7 @@ namespace K9.WebApplication.Controllers
 
             return View("MyAccount", new MyAccountViewModel
             {
-                User = model.User,
-                PromoCode = model.PromoCode,
-                Membership = _membershipService.GetActiveUserMembership(model.User.Id)
+                User = model.User
             });
         }
 
@@ -498,43 +386,7 @@ namespace K9.WebApplication.Controllers
 
             return RedirectToAction("DeleteAccountFailed");
         }
-
-        [Route("promocodes/email")]
-        [Authorize]
-        public ActionResult EmailPromoCode(int id)
-        {
-            var promoCode = _promoCodesRepository.Find(id);
-            var model = new EmailPromoCodeViewModel
-            {
-                PromoCode = promoCode
-            };
-            return View(model);
-        }
-
-        [Route("promocodes/email")]
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EmailPromoCode(EmailPromoCodeViewModel model)
-        {
-            try
-            {
-                _userService.SendPromoCode(model);
-            }
-            catch (Exception e)
-            {
-                _logger.Error($"AccountController => EmailPromocode => Error: {e.GetFullErrorMessage()}");
-                throw;
-            }
-
-            return RedirectToAction("PromoCodeEmailSent");
-        }
-
-        public ActionResult PromoCodeEmailSent()
-        {
-            return View();
-        }
-
+        
         public ActionResult ConfirmDeleteAccount(int id)
         {
             var user = _userRepository.Find(id);
@@ -679,7 +531,6 @@ namespace K9.WebApplication.Controllers
             switch (result.Result)
             {
                 case EActivateAccountResult.Success:
-                    _membershipService.CreateFreeMembership(result.User.Id);
                     return RedirectToAction("AccountActivated", "Account", new { userName });
 
                 case EActivateAccountResult.AlreadyActivated:

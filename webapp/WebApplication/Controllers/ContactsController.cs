@@ -18,33 +18,15 @@ namespace K9.WebApplication.Controllers
     [RequirePermissions(Role = RoleNames.Administrators)]
     public class ContactsController : BaseController<Contact>
     {
-        private readonly IRepository<Donation> _donationRepository;
         private readonly ILogger _logger;
         private readonly IMailChimpService _mailChimpService;
 
-        public ContactsController(IControllerPackage<Contact> controllerPackage, IRepository<Donation> donationRepository, ILogger logger, IMailChimpService mailChimpService) : base(controllerPackage)
+        public ContactsController(IControllerPackage<Contact> controllerPackage, ILogger logger, IMailChimpService mailChimpService) : base(controllerPackage)
         {
-            _donationRepository = donationRepository;
             _logger = logger;
             _mailChimpService = mailChimpService;
         }
-
-        public ActionResult ImportContactsFromDonations()
-        {
-            var existing = Repository.List();
-
-            var contactsToImport = _donationRepository.Find(c => !string.IsNullOrEmpty(c.CustomerEmail) && existing.All(e => e.EmailAddress != c.CustomerEmail))
-                .Select(e => new Contact
-                {
-                    FullName = e.CustomerName,
-                    EmailAddress = e.CustomerEmail
-                }).ToList();
-
-            Repository.CreateBatch(contactsToImport);
-
-            return RedirectToAction("Index");
-        }
-
+        
         [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult SignUpToNewsLetter()
         {

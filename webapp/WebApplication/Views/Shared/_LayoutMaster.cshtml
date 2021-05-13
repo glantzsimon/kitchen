@@ -5,10 +5,10 @@
     var metaLocaleName = CultureInfo.CurrentUICulture.GetMetaLocaleName();
     var languageName = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower();
     var keywords = ViewBag.Keywords ?? Dictionary.Keywords;
-    var mainTitle = (ViewBag.Title ?? string.Empty).Replace(Dictionary.NineStarKiTitle, string.Empty).Trim();
-    var pageTitle = string.IsNullOrEmpty(mainTitle) ? Dictionary.NineStar : $"{mainTitle} &raquo; {Dictionary.NineStar}";
-    var title = Html.Raw($"{pageTitle} &raquo; {Dictionary.NineStarKiAstrology}");
-    var description = Html.Raw(ViewBag.MetaDescription ?? Dictionary.NineStarMetaDescriptionMain);
+    var mainTitle = (ViewBag.Title ?? string.Empty).Replace(Dictionary.GlantzSoftwareConsulting, string.Empty).Trim();
+    var pageTitle = string.IsNullOrEmpty(mainTitle) ? Dictionary.GlantzSoftwareConsulting : $"{mainTitle} &raquo; {Dictionary.GlantzSoftwareConsulting}";
+    var title = Html.Raw($"{pageTitle} &raquo; {Dictionary.GlantzSoftwareConsulting}");
+    var description = Html.Raw(ViewBag.MetaDescription ?? Dictionary.GlantzSoftwareConsulting);
 }
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />
     <meta property="og:url" content="/" />
-    <meta property="og:site_name" content="@Dictionary.NineStar" />
+    <meta property="og:site_name" content="@Dictionary.GlantzSoftwareConsulting" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="@description" />
     <meta name="twitter:title" content="@title" />
@@ -109,7 +109,7 @@ Html.RenderPartial("_GoogleAnalytics");
 </head>
 <body>
     <div id="pageFadeInOverlay">
-        <img class="cropped" src="~/Images/shared/ninestar-spinner.gif" />
+        <img class="cropped" src="~/Images/shared/spinner.gif" />
     </div>
     <div id="pageSpinner"></div>
     <div id="pageOverlay"></div>

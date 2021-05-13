@@ -1,16 +1,9 @@
-﻿using K9.Base.WebApplication.Constants.Html;
-using K9.Base.WebApplication.Enums;
-using K9.Base.WebApplication.Helpers;
-using K9.DataAccessLayer.Models;
-using K9.Globalisation;
-using K9.WebApplication.Controllers;
-using K9.WebApplication.Models;
+﻿using K9.Base.WebApplication.Helpers;
 using K9.WebApplication.Options;
 using System;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using WebMatrix.WebData;
 
 namespace K9.WebApplication.Helpers
 {
@@ -82,71 +75,6 @@ namespace K9.WebApplication.Helpers
         {
             return $"{energyName} {html.GetDisplayNameFor(expression)}";
         }
-
-        public static IDisposable PaidContent(this HtmlHelper html, MembershipOption.ESubscriptionType subscriptionType = MembershipOption.ESubscriptionType.MonthlyStandard, bool silent = false)
-        {
-            var baseController = html.ViewContext.Controller as BaseNineStarKiController;
-            var activeUserMembership = baseController?.GetActiveUserMembership();
-            return html.PaidContent<NineStarKiModel>(null,
-                () => activeUserMembership?.MembershipOption?.SubscriptionType >= subscriptionType, silent);
-        }
-
-        public static IDisposable PaidContent<T>(this HtmlHelper html, T model, Func<bool> condition = null, bool silent = false)
-        {
-            var baseController = html.ViewContext.Controller as BaseNineStarKiController;
-            var activeUserMembership = baseController?.GetActiveUserMembership();
-            var showContent = activeUserMembership != null && (condition?.Invoke() ?? true);
-            var isProfile = typeof(T) == typeof(NineStarKiModel);
-            var isCompatibility = typeof(T) == typeof(CompatibilityModel);
-            var retrieveLast = isProfile ? "p" : isCompatibility ? "c" : "none";
-
-            var div = new TagBuilder(Tags.Div);
-            if (!(WebSecurity.IsAuthenticated && showContent))
-            {
-                div.MergeAttribute(Base.WebApplication.Constants.Html.Attributes.Style, "display: none !important;");
-
-                if (model != null)
-                {
-                    if (isProfile)
-                    {
-                        SessionHelper.SetLastProfile(model as NineStarKiModel);
-                    }
-
-                    if (isCompatibility)
-                    {
-                        SessionHelper.SetLastCompatibility(model as CompatibilityModel);
-                    }
-                }
-            }
-
-            if (!silent && !showContent)
-            {
-                var centerDiv = new TagBuilder(Tags.Div);
-                centerDiv.MergeAttribute(Base.WebApplication.Constants.Html.Attributes.Class,
-                    "upgrade-container center-block");
-                html.ViewContext.Writer.WriteLine(centerDiv.ToString(TagRenderMode.StartTag));
-                if (WebSecurity.IsAuthenticated)
-                {
-                    html.ViewContext.Writer.WriteLine(
-                        $"<h4><strong>{Dictionary.UpgradeMembershipFullText}</strong></h4>");
-                    html.ViewContext.Writer.WriteLine(html.BootstrapActionLinkButton(
-                        Dictionary.UpgradeMembershipText,
-                        "Index", "Membership", null, "fa-level-up-alt", EButtonClass.Large));
-                    html.ViewContext.Writer.WriteLine(
-                        $"<div class=\"inline\" data-toggle=\"tooltip\" title=\"{Dictionary.CreditsDescriptionUI}\">{html.BootstrapActionLinkButton(Dictionary.PurchaseCredits, "PurchaseCreditsStart", "Membership", null, "fa-money-bill-alt", EButtonClass.Large, EButtonClass.Info)}</div>");
-                }
-                else
-                {
-                    html.ViewContext.Writer.WriteLine(html.BootstrapActionLinkButton(
-                        Dictionary.LogIntoYourAccountToView, "Login", "Account", new { retrieveLast }, "fa-sign-in",
-                        EButtonClass.Large));
-                }
-
-                html.ViewContext.Writer.WriteLine(centerDiv.ToString(TagRenderMode.EndTag));
-            }
-
-            html.ViewContext.Writer.WriteLine(div.ToString(TagRenderMode.StartTag));
-            return new TagCloser(html, Tags.Div);
-        }
+        
     }
 }

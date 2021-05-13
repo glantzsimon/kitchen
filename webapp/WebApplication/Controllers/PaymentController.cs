@@ -11,7 +11,7 @@ using StripeConfiguration = K9.WebApplication.Config.StripeConfiguration;
 
 namespace K9.WebApplication.Controllers
 {
-    public class PaymentsController : BaseNineStarKiController
+    public class PaymentsController : BaseGcController
     {
         private readonly ILogger _logger;
         private readonly IStripeService _stripeService;
@@ -19,8 +19,8 @@ namespace K9.WebApplication.Controllers
         private readonly IUserService _userService;
         private readonly StripeConfiguration _stripeConfig;
 
-        public PaymentsController(ILogger logger, IDataSetsHelper dataSetsHelper, IRoles roles, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IStripeService stripeService, IOptions<StripeConfiguration> stripeConfig, IMembershipService membershipService, IContactService contactService, IUserService userService)
-            : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper, membershipService)
+        public PaymentsController(ILogger logger, IDataSetsHelper dataSetsHelper, IRoles roles, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IStripeService stripeService, IOptions<StripeConfiguration> stripeConfig, IContactService contactService, IUserService userService)
+            : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper)
         {
             _logger = logger;
             _stripeService = stripeService;

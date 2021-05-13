@@ -14,23 +14,21 @@ using System.Web.Mvc;
 
 namespace K9.WebApplication.Controllers
 {
-    public class SupportController : BaseNineStarKiController
+    public class SupportController : BaseGcController
     {
         private readonly ILogger _logger;
         private readonly IMailer _mailer;
-        private readonly IDonationService _donationService;
         private readonly IContactService _contactService;
         private readonly IRecaptchaService _recaptchaService;
         private readonly RecaptchaConfiguration _recaptchaConfig;
         private readonly WebsiteConfiguration _config;
         private readonly UrlHelper _urlHelper;
 
-        public SupportController(ILogger logger, IDataSetsHelper dataSetsHelper, IRoles roles, IMailer mailer, IOptions<WebsiteConfiguration> config, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IOptions<StripeConfiguration> stripeConfig, IDonationService donationService, IMembershipService membershipService, IContactService contactService, IOptions<RecaptchaConfiguration> recaptchaConfig, IRecaptchaService recaptchaService)
-            : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper, membershipService)
+        public SupportController(ILogger logger, IDataSetsHelper dataSetsHelper, IRoles roles, IMailer mailer, IOptions<WebsiteConfiguration> config, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IOptions<StripeConfiguration> stripeConfig, IContactService contactService, IOptions<RecaptchaConfiguration> recaptchaConfig, IRecaptchaService recaptchaService)
+            : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper)
         {
             _logger = logger;
             _mailer = mailer;
-            _donationService = donationService;
             _contactService = contactService;
             _recaptchaService = recaptchaService;
             _recaptchaConfig = recaptchaConfig.Value;
@@ -85,61 +83,61 @@ namespace K9.WebApplication.Controllers
             return View();
         }
         
-        [Route("donate")]
-        public ActionResult DonateStart()
-        {
-            return View(new Donation
-            {
-                DonationAmount = 10,
-                DonationDescription = Dictionary.DonationToNineStar
-            });
-        }   
+        //[Route("donate")]
+        //public ActionResult DonateStart()
+        //{
+        //    return View(new Donation
+        //    {
+        //        DonationAmount = 10,
+        //        DonationDescription = Dictionary.DonationToNineStar
+        //    });
+        //}   
 
-        [Route("donate")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Donate(Donation donation)
-        {
-            return View(donation);
-        }
+        //[Route("donate")]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Donate(Donation donation)
+        //{
+        //    return View(donation);
+        //}
 
-        [HttpPost]
-        public ActionResult ProcessDonation(PurchaseModel purchaseModel)
-        {
-            try
-            {
-                var contact = _contactService.Find(purchaseModel.ContactId);
+        //[HttpPost]
+        //public ActionResult ProcessDonation(PurchaseModel purchaseModel)
+        //{
+        //    try
+        //    {
+        //        var contact = _contactService.Find(purchaseModel.ContactId);
 
-                _donationService.CreateDonation(new Donation
-                {
-                    Currency = purchaseModel.Currency,
-                    Customer = purchaseModel.CustomerName,
-                    CustomerEmail = purchaseModel.CustomerEmailAddress,
-                    DonationDescription = purchaseModel.Description,
-                    DonatedOn = DateTime.Now,
-                    DonationAmount = purchaseModel.Amount
-                }, contact);
+        //        _donationService.CreateDonation(new Donation
+        //        {
+        //            Currency = purchaseModel.Currency,
+        //            Customer = purchaseModel.CustomerName,
+        //            CustomerEmail = purchaseModel.CustomerEmailAddress,
+        //            DonationDescription = purchaseModel.Description,
+        //            DonatedOn = DateTime.Now,
+        //            DonationAmount = purchaseModel.Amount
+        //        }, contact);
 
-                return Json(new { success = true });
-            }
-            catch (Exception ex)
-            {
-                _logger.Error($"SupportController => ProcessDonation => Error: {ex.GetFullErrorMessage()}");
-                return Json(new { success = false, error = ex.Message });
-            }
-        }
+        //        return Json(new { success = true });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.Error($"SupportController => ProcessDonation => Error: {ex.GetFullErrorMessage()}");
+        //        return Json(new { success = false, error = ex.Message });
+        //    }
+        //}
 
-        [Route("donate/success")]
-        public ActionResult DonationSuccess(string sessionId)
-        {
-            return View();
-        }
+        //[Route("donate/success")]
+        //public ActionResult DonationSuccess(string sessionId)
+        //{
+        //    return View();
+        //}
 
-        [Route("donate/cancel/success")]
-        public ActionResult DonationCancelSuccess()
-        {
-            return View();
-        }
+        //[Route("donate/cancel/success")]
+        //public ActionResult DonationCancelSuccess()
+        //{
+        //    return View();
+        //}
 
         public override string GetObjectName()
         {

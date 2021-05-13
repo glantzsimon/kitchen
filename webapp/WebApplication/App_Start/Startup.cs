@@ -52,14 +52,9 @@ namespace K9.WebApplication
             builder.RegisterType<FileSourceHelper>().As<IFileSourceHelper>().InstancePerRequest();
             builder.RegisterGeneric(typeof(ControllerPackage<>)).As(typeof(IControllerPackage<>)).InstancePerRequest();
             builder.RegisterType<AccountService>().As<IAccountService>().InstancePerRequest();
-            builder.RegisterType<ShopService>().As<IShopService>().InstancePerRequest();
             builder.RegisterType<FacebookService>().As<IFacebookService>().InstancePerRequest();
             builder.RegisterType<StripeService>().As<IStripeService>().InstancePerRequest();
-            builder.RegisterType<DonationService>().As<IDonationService>().InstancePerRequest();
-            builder.RegisterType<ConsultationService>().As<IConsultationService>().InstancePerRequest();
-            builder.RegisterType<NineStarKiService>().As<INineStarKiService>().InstancePerRequest();
             builder.RegisterType<AccountMailerService>().As<IAccountMailerService>().InstancePerRequest();
-            builder.RegisterType<MembershipService>().As<IMembershipService>().InstancePerRequest();
             builder.RegisterType<ContactService>().As<IContactService>().InstancePerRequest();
             builder.RegisterType<MailChimpService>().As<IMailChimpService>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();

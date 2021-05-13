@@ -1,8 +1,4 @@
-﻿using K9.DataAccessLayer.Models;
-using K9.WebApplication.Controllers;
-using System;
-using System.Text.RegularExpressions;
-using System.Web.Mvc;
+﻿using System.Text.RegularExpressions;
 
 namespace K9.WebApplication.Extensions
 {
@@ -23,19 +19,6 @@ namespace K9.WebApplication.Extensions
             var substring = value.Substring(0, canBeAbbreviated ? length : valueLength);
             var abbrevationSuffix = canBeAbbreviated ? "..." : string.Empty;
             return $"{substring}{abbrevationSuffix}";
-        }
-
-        public static UserMembership GetActiveUserMembership(this WebViewPage view)
-        {
-            try
-            {
-                var baseController = view.ViewContext.Controller as BaseNineStarKiController;
-                return baseController?.GetActiveUserMembership();
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
         }
     }
 }

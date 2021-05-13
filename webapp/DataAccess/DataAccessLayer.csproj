@@ -247,93 +247,9 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseInitialiser.cs" />
     <Compile Include="Database\Db.cs" />
-    <Compile Include="Database\Seeds\MembershipOptionsSeeder.cs" />
     <Compile Include="Database\Seeds\PermissionsSeeder.cs" />
-    <Compile Include="Enums\EConsultationDuration.cs" />
     <Compile Include="Helpers\Methods.cs" />
-    <Compile Include="Migrations\202007211011153_July2020.cs" />
-    <Compile Include="Migrations\202007211011153_July2020.Designer.cs">
-      <DependentUpon>202007211011153_July2020.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012121417460_20201212_2117.cs" />
-    <Compile Include="Migrations\202012121417460_20201212_2117.Designer.cs">
-      <DependentUpon>202012121417460_20201212_2117.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012131750303_DbUpdate.cs" />
-    <Compile Include="Migrations\202012131750303_DbUpdate.Designer.cs">
-      <DependentUpon>202012131750303_DbUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012131759232_DbUpdate1.cs" />
-    <Compile Include="Migrations\202012131759232_DbUpdate1.Designer.cs">
-      <DependentUpon>202012131759232_DbUpdate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012132059496_CleanUp.cs" />
-    <Compile Include="Migrations\202012132059496_CleanUp.Designer.cs">
-      <DependentUpon>202012132059496_CleanUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012160145333_DbUpdate2.cs" />
-    <Compile Include="Migrations\202012160145333_DbUpdate2.Designer.cs">
-      <DependentUpon>202012160145333_DbUpdate2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012181520116_AddMemberships.cs" />
-    <Compile Include="Migrations\202012181520116_AddMemberships.Designer.cs">
-      <DependentUpon>202012181520116_AddMemberships.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012212052366_GenderToUser.cs" />
-    <Compile Include="Migrations\202012212052366_GenderToUser.Designer.cs">
-      <DependentUpon>202012212052366_GenderToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012252346046_MembershipIsDeactivated.cs" />
-    <Compile Include="Migrations\202012252346046_MembershipIsDeactivated.Designer.cs">
-      <DependentUpon>202012252346046_MembershipIsDeactivated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012261621485_AddUserCredits.cs" />
-    <Compile Include="Migrations\202012261621485_AddUserCredits.Designer.cs">
-      <DependentUpon>202012261621485_AddUserCredits.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101102148124_AddPromoCodes.cs" />
-    <Compile Include="Migrations\202101102148124_AddPromoCodes.Designer.cs">
-      <DependentUpon>202101102148124_AddPromoCodes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101102224178_UpdatePromoCode.cs" />
-    <Compile Include="Migrations\202101102224178_UpdatePromoCode.Designer.cs">
-      <DependentUpon>202101102224178_UpdatePromoCode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101102315127_UpdatePromoCode1.cs" />
-    <Compile Include="Migrations\202101102315127_UpdatePromoCode1.Designer.cs">
-      <DependentUpon>202101102315127_UpdatePromoCode1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101111639061_AddPriceToPromoCode.cs" />
-    <Compile Include="Migrations\202101111639061_AddPriceToPromoCode.Designer.cs">
-      <DependentUpon>202101111639061_AddPriceToPromoCode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101120128227_AddConsultations.cs" />
-    <Compile Include="Migrations\202101120128227_AddConsultations.Designer.cs">
-      <DependentUpon>202101120128227_AddConsultations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101120755239_AddConsultationCompletedOn.cs" />
-    <Compile Include="Migrations\202101120755239_AddConsultationCompletedOn.Designer.cs">
-      <DependentUpon>202101120755239_AddConsultationCompletedOn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101162058510_AddNameToProfileReadings.cs" />
-    <Compile Include="Migrations\202101162058510_AddNameToProfileReadings.Designer.cs">
-      <DependentUpon>202101162058510_AddNameToProfileReadings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102030138393_AddHideSexuality.cs" />
-    <Compile Include="Migrations\202102030138393_AddHideSexuality.Designer.cs">
-      <DependentUpon>202102030138393_AddHideSexuality.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Consultation.cs" />
-    <Compile Include="Models\PromoCode.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\MembershipOption.cs" />
-    <Compile Include="Models\UserCompatibilityReading.cs" />
-    <Compile Include="Models\UserConsultation.cs" />
-    <Compile Include="Models\UserPromoCode.cs" />
-    <Compile Include="Models\UserCreditPack.cs" />
-    <Compile Include="Models\UserProfileReading.cs" />
-    <Compile Include="Models\UserMembership.cs" />
-    <Compile Include="Models\Donation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -342,69 +258,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />
+    <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Globalisation\Globalisation.csproj">
       <Project>{37795dc6-45c9-458c-a3a5-48da6534c35c}</Project>
       <Name>Globalisation</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007211011153_July2020.resx">
-      <DependentUpon>202007211011153_July2020.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012121417460_20201212_2117.resx">
-      <DependentUpon>202012121417460_20201212_2117.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012131750303_DbUpdate.resx">
-      <DependentUpon>202012131750303_DbUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012131759232_DbUpdate1.resx">
-      <DependentUpon>202012131759232_DbUpdate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012132059496_CleanUp.resx">
-      <DependentUpon>202012132059496_CleanUp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012160145333_DbUpdate2.resx">
-      <DependentUpon>202012160145333_DbUpdate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012181520116_AddMemberships.resx">
-      <DependentUpon>202012181520116_AddMemberships.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012212052366_GenderToUser.resx">
-      <DependentUpon>202012212052366_GenderToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012252346046_MembershipIsDeactivated.resx">
-      <DependentUpon>202012252346046_MembershipIsDeactivated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012261621485_AddUserCredits.resx">
-      <DependentUpon>202012261621485_AddUserCredits.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101102148124_AddPromoCodes.resx">
-      <DependentUpon>202101102148124_AddPromoCodes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101102224178_UpdatePromoCode.resx">
-      <DependentUpon>202101102224178_UpdatePromoCode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101102315127_UpdatePromoCode1.resx">
-      <DependentUpon>202101102315127_UpdatePromoCode1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101111639061_AddPriceToPromoCode.resx">
-      <DependentUpon>202101111639061_AddPriceToPromoCode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101120128227_AddConsultations.resx">
-      <DependentUpon>202101120128227_AddConsultations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101120755239_AddConsultationCompletedOn.resx">
-      <DependentUpon>202101120755239_AddConsultationCompletedOn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101162058510_AddNameToProfileReadings.resx">
-      <DependentUpon>202101162058510_AddNameToProfileReadings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102030138393_AddHideSexuality.resx">
-      <DependentUpon>202102030138393_AddHideSexuality.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

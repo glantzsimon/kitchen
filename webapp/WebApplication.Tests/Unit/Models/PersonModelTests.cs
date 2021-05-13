@@ -2,7 +2,7 @@
 using K9.WebApplication.Models;
 using Xunit;
 
-namespace K9.WebApplication.Tests.Unit.Mdels
+namespace K9.WebApplication.Tests.Unit.Models
 {
     public class PersonModelTests
     {

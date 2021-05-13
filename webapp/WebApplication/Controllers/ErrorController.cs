@@ -1,17 +1,16 @@
 ﻿using K9.SharedLibrary.Helpers;
 using K9.SharedLibrary.Models;
-using K9.WebApplication.Services;
 using NLog;
 using System.Web.Mvc;
 
 namespace K9.WebApplication.Controllers
 {
-    public class ErrorController : BaseNineStarKiController
+    public class ErrorController : BaseGcController
 	{
 	    private readonly ILogger _logger;
 
-	    public ErrorController(ILogger logger, IDataSetsHelper dataSetsHelper, IRoles roles, IAuthentication authentication, IFileSourceHelper fileSourceHelper, IMembershipService membershipService)
-	        : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper, membershipService)
+	    public ErrorController(ILogger logger, IDataSetsHelper dataSetsHelper, IRoles roles, IAuthentication authentication, IFileSourceHelper fileSourceHelper)
+	        : base(logger, dataSetsHelper, roles, authentication, fileSourceHelper)
 	    {
 	        _logger = logger;
 	    }
