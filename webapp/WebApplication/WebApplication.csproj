@@ -328,7 +328,10 @@
     <Compile Include="Config\RecaptchaConfiguration.cs" />
     <Compile Include="Config\StripeConfiguration.cs" />
     <Compile Include="Constants\SessionConstants.cs" />
+    <Compile Include="Controllers\SuitabilitiesController.cs" />
+    <Compile Include="Controllers\DishesController.cs" />
     <Compile Include="Controllers\BaseGcController.cs" />
+    <Compile Include="Controllers\AllergensController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
@@ -360,12 +363,15 @@
     <Compile Include="Models\LogItem.cs" />
     <Compile Include="Options\GaugeOptions.cs" />
     <Compile Include="Options\PaymentsOptions.cs" />
+    <Compile Include="Services\KitchenManagerService.cs" />
+    <Compile Include="Services\IKitchenManagerService.cs" />
     <Compile Include="Services\ILogService.cs" />
     <Compile Include="Services\IRecaptchaService.cs" />
     <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\RecaptchaService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="ViewModels\AllergenSheetModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\MyAccountViewModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
@@ -1030,6 +1036,7 @@
     <Content Include="Views\Shared\_GlobalJs.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
     <Content Include="Views\Account\FacebookPostRegsiter.cshtml" />
+    <Content Include="Views\Home\_AllergenSheet.cshtml" />
     <None Include="Web.Integration.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

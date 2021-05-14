@@ -253,6 +253,15 @@
     <Compile Include="Migrations\202105130556103_InitialCreate.Designer.cs">
       <DependentUpon>202105130556103_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105141010529_MainTables.cs" />
+    <Compile Include="Migrations\202105141010529_MainTables.Designer.cs">
+      <DependentUpon>202105141010529_MainTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DishSuitability.cs" />
+    <Compile Include="Models\DishAllergen.cs" />
+    <Compile Include="Models\Suitability.cs" />
+    <Compile Include="Models\Dish.cs" />
+    <Compile Include="Models\Allergen.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -274,6 +283,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202105130556103_InitialCreate.resx">
       <DependentUpon>202105130556103_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105141010529_MainTables.resx">
+      <DependentUpon>202105141010529_MainTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

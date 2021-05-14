@@ -97,6 +97,24 @@ namespace K9.Globalisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allergen.
+        /// </summary>
+        public static string Allergen {
+            get {
+                return ResourceManager.GetString("Allergen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allergens.
+        /// </summary>
+        public static string Allergens {
+            get {
+                return ResourceManager.GetString("Allergens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         public static string AmountLabel {
@@ -345,6 +363,69 @@ namespace K9.Globalisation {
         public static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dish.
+        /// </summary>
+        public static string Dish {
+            get {
+                return ResourceManager.GetString("Dish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dish Allergen.
+        /// </summary>
+        public static string DishAllergen {
+            get {
+                return ResourceManager.GetString("DishAllergen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dish Allergens.
+        /// </summary>
+        public static string DishAllergens {
+            get {
+                return ResourceManager.GetString("DishAllergens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dishes.
+        /// </summary>
+        public static string Dishes {
+            get {
+                return ResourceManager.GetString("Dishes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dish Suitable For.
+        /// </summary>
+        public static string DishSuitabilities {
+            get {
+                return ResourceManager.GetString("DishSuitabilities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dish Suitable For.
+        /// </summary>
+        public static string DishSuitability {
+            get {
+                return ResourceManager.GetString("DishSuitability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dish Type.
+        /// </summary>
+        public static string DishTypeLabel {
+            get {
+                return ResourceManager.GetString("DishTypeLabel", resourceCulture);
             }
         }
         
@@ -720,6 +801,24 @@ namespace K9.Globalisation {
         public static string StripeCustomerIdLabel {
             get {
                 return ResourceManager.GetString("StripeCustomerIdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suitable For.
+        /// </summary>
+        public static string Suitabilities {
+            get {
+                return ResourceManager.GetString("Suitabilities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suitable For.
+        /// </summary>
+        public static string Suitability {
+            get {
+                return ResourceManager.GetString("Suitability", resourceCulture);
             }
         }
         

@@ -22,6 +22,7 @@
             public const string GenderLabel = "GenderLabel";
             public const string DateOfBirthLabel = "DateOfBirthLabel";
             public const string AmountLabel = "AmountLabel";
+            public const string DishTypeLabel = "DishTypeLabel";
         }
 
         public static class Names
@@ -30,6 +31,16 @@
             public const string UserDatas = "UserDatas";
             public const string Contacts = "Contacts";
             public const string Contact = "Contact";
+            public const string Allergens = "Allergens";
+            public const string Allergen = "Allergen";
+            public const string Dishes = "Dishes";
+            public const string Dish = "Dish";
+            public const string Suitabilities = "Suitabilities";
+            public const string Suitability = "Suitability";
+            public const string DishAllergens = "DishAllergens";
+            public const string DishAllergen = "DishAllergen";
+            public const string DishSuitabilities = "DishSuitabilities";
+            public const string DishSuitability = "DishSuitability";
         }
     }
 }

@@ -52,50 +52,29 @@
                 </div>
                 <div class="collapse navbar-collapse menu-main" id="bs-navbar-collapse-1">
                     <ul class="nav navbar-nav main-navbar">
-                        @if (WebSecurity.IsAuthenticated)
+                        @if (WebSecurity.IsAuthenticated && roles.CurrentUserIsInRoles(RoleNames.PowerUsers, RoleNames.Administrators))
                         {
-                            <li class="dropdown">
-                                @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span>@Dictionary.Calculator</span> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu nav navbar-nav">
-                                        <li class="@ViewContext.GetActiveClass("Index", "NineStarKi")"><a href="@Url.Action("Index", "NineStarKi")"> @Dictionary.ProfileCalculator</a></li>
-                                        <li class="@ViewContext.GetActiveClass("MySavedProfiles", "UserProfileReadings")"><a href="@Url.Action("MySavedProfiles", "UserProfileReadings")"> @Dictionary.SavedCharts</a></li>
-                                    </ul>*@
-                            </li>
+                            <li class="@ViewContext.GetActiveClass("Index", "Allergens")"><a href="@Url.Action("Index", "Allergens")"> @Dictionary.Allergens</a></li>
+                            <li class="@ViewContext.GetActiveClass("Index", "Dishes")"><a href="@Url.Action("Index", "Dishes")"> @Dictionary.Dishes</a></li>
                         }
                         else
                         {
-                            @*<li class="desktop-only @ViewContext.GetActiveClass("Index", "NineStarKi")"><a href="@Url.Action("Index", "NineStarKi")"> <span class="desktop-only">@Dictionary.ProfileCalculator</span><span class="device-only">@Dictionary.Calculator</span></a></li>*@
+                            <li></li>
+                            <li></li>
                         }
-
-                        <li class="dropdown">
-                            @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span> @Dictionary.Relationships</span> <span class="caret"></span></a>
-                                <ul class="dropdown-menu nav navbar-nav">
-                                    <li class="@ViewContext.GetActiveClass("Compatibility", "NineStarKi")"><a href="@Url.Action("Compatibility", "NineStarKi")"> @Dictionary.CompatibilityCalculator</a></li>
-                                    <li class="@ViewContext.GetActiveClass("Index", "Relationships")"><a href="@Url.ActionWithBookmark("Index", "Relationships", "relationships")"> @Dictionary.AboutRelationships</a></li>
-                                    <li><a href="@Url.ActionWithBookmark("Index", "Relationships", "transformations")"> @Dictionary.FiveTransformationsTitle</a></li>
-                                    <li><a href="@Url.ActionWithBookmark("Index", "Relationships", "sexuality")"> @Dictionary.SexualityLabel</a></li>
-                                    @if (WebSecurity.IsAuthenticated)
-                                    {
-                                        <li class="@ViewContext.GetActiveClass("MySavedReadings", "UserRelationshipCompatibilityReadings")"><a href="@Url.Action("MySavedReadings", "UserRelationshipCompatibilityReadings")"> @Dictionary.SavedCompatibilityReadings</a></li>
-                                    }
-                                </ul>*@
-                        </li>
 
                         <li class="@ViewContext.GetActiveClass("Index", "Home")"><a class="device-only" href="@Url.Action("Index", "Home")"> <span class="device-only">@K9.Base.Globalisation.Dictionary.Home</span></a></li>
 
-                        <li class="dropdown">
-                            @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span> @Dictionary.CyclesSubTitle</span> <span class="caret"></span></a>
-                                <ul class="dropdown-menu nav navbar-nav">
-                                    @if (WebSecurity.IsAuthenticated)
-                                    {
-                                        <li><a href="@Url.Action("MyCycles", "NineStarKi")"> @Dictionary.MyYearlyAndMonthlyCycles</a></li>
-                                    }
-                                    <li><a href="@Url.ActionWithBookmark("Index", "Predictions", "yearly-cycles")"> @Dictionary.AboutYearlyCycles</a></li>       </ul>*@
-                        </li>
-
-                        <li class="dropdown">
-                            
-                        </li>
+                        @if (WebSecurity.IsAuthenticated && roles.CurrentUserIsInRoles(RoleNames.PowerUsers, RoleNames.Administrators))
+                        {
+                            <li class="@ViewContext.GetActiveClass("Index", "Suitabilities")"><a href="@Url.Action("Index", "Suitabilities")"> @Dictionary.Suitabilities</a></li>
+                            <li></li>
+                        }
+                        else
+                        {
+                            <li></li>
+                            <li></li>
+                        }
                     </ul>
                     <div class="clearfix"> </div>
                 </div>

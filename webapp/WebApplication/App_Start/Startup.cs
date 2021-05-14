@@ -60,6 +60,7 @@ namespace K9.WebApplication
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<RecaptchaService>().As<IRecaptchaService>().InstancePerRequest();
             builder.RegisterType<LogService>().As<ILogService>().InstancePerRequest();
+            builder.RegisterType<KitchenManagerService>().As<IKitchenManagerService>().InstancePerRequest();
 
             RegisterConfiguration(builder);
 

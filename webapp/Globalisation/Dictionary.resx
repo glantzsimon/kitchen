@@ -370,4 +370,37 @@
   <data name="WolfKitchenManager" xml:space="preserve">
     <value>Wolf Kitchen Manager</value>
   </data>
+  <data name="Allergen" xml:space="preserve">
+    <value>Allergen</value>
+  </data>
+  <data name="Allergens" xml:space="preserve">
+    <value>Allergens</value>
+  </data>
+  <data name="Dish" xml:space="preserve">
+    <value>Dish</value>
+  </data>
+  <data name="DishAllergen" xml:space="preserve">
+    <value>Dish Allergen</value>
+  </data>
+  <data name="DishAllergens" xml:space="preserve">
+    <value>Dish Allergens</value>
+  </data>
+  <data name="Dishes" xml:space="preserve">
+    <value>Dishes</value>
+  </data>
+  <data name="DishSuitabilities" xml:space="preserve">
+    <value>Dish Suitable For</value>
+  </data>
+  <data name="DishSuitability" xml:space="preserve">
+    <value>Dish Suitable For</value>
+  </data>
+  <data name="DishTypeLabel" xml:space="preserve">
+    <value>Dish Type</value>
+  </data>
+  <data name="Suitabilities" xml:space="preserve">
+    <value>Suitable For</value>
+  </data>
+  <data name="Suitability" xml:space="preserve">
+    <value>Suitable For</value>
+  </data>
 </root>

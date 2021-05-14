@@ -1,7 +1,7 @@
 ﻿@using K9.WebApplication.Helpers
 @{
     ViewBag.Title = K9.Base.Globalisation.Dictionary.Home;
-    ViewBag.SubTitle = "Welcome";
+    ViewBag.SubTitle = "Wolf Kitchen Manager";
     ViewBag.Background = ViewBagHelper.EViewBackground.Default;
     Layout = "../Shared/_LayoutFormMedium.cshtml";
 }
@@ -11,7 +11,14 @@
 <div class="container main-content">
     <div class="well margin-bottom-0">
         <article>
-            @MvcHtmlString.Create("Welcome")
+            @if (!WebSecurity.IsAuthenticated)
+            {
+                <h4>Welcome to Wolf Kitchen Manager. Please @Html.ActionLink("log in","Login", "Account")</h4>
+            }
+            else
+            {
+                @Html.Partial("_AllergenSheet")
+            }
         </article>
         
     </div>
