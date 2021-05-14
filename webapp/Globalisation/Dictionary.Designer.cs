@@ -448,6 +448,15 @@ namespace K9.Globalisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here.
+        /// </summary>
+        public static string Here {
+            get {
+                return ResourceManager.GetString("Here", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid reCAPTCHA response.
         /// </summary>
         public static string InvalidRecaptcha {
@@ -884,6 +893,15 @@ namespace K9.Globalisation {
         public static string WelcomeEmail {
             get {
                 return ResourceManager.GetString("WelcomeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wolf Kitchen Manager.
+        /// </summary>
+        public static string WolfKitchenManager {
+            get {
+                return ResourceManager.GetString("WolfKitchenManager", resourceCulture);
             }
         }
     }

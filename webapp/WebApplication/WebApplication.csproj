@@ -986,7 +986,6 @@
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
     <Content Include="Views\Shared\_SEO.cshtml" />
     <Content Include="Views\Shared\Controls\_Panel.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\Controls\_ImagePanel.cshtml" />
     <Content Include="Views\Shared\_AudioFilesDisplay.cshtml" />
     <Content Include="Views\Shared\_CookieWarning.cshtml" />
@@ -1006,9 +1005,6 @@
     <Content Include="Views\Contacts\_EditFields.cshtml" />
     <Content Include="Views\Shared\_Selected.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
-    <Content Include="Views\Home\_NineEnergiesOverview.cshtml" />
-    <Content Include="Views\Home\_ModalityGroupHeader.cshtml" />
-    <Content Include="Views\Home\_ModalityDetails.cshtml" />
     <Content Include="Views\Shared\_VideoFilesDisplay.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
@@ -1034,8 +1030,6 @@
     <Content Include="Views\Shared\_GlobalJs.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
     <Content Include="Views\Account\FacebookPostRegsiter.cshtml" />
-    <Content Include="Views\Home\_Modalities.cshtml" />
-    <Content Include="Views\Home\_FiveElements.cshtml" />
     <None Include="Web.Integration.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

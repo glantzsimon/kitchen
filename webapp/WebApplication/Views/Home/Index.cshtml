@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = K9.Base.Globalisation.Dictionary.Home;
     ViewBag.SubTitle = "Welcome";
-    ViewBag.Background = ViewBagHelper.EViewBackground.Jarallax;
+    ViewBag.Background = ViewBagHelper.EViewBackground.Default;
     Layout = "../Shared/_LayoutFormMedium.cshtml";
 }
 
@@ -10,8 +10,6 @@
 
 <div class="container main-content">
     <div class="well margin-bottom-0">
-        @Html.ImagePanel("Welcome", "~/Images/home/home-bg.jpg")
-
         <article>
             @MvcHtmlString.Create("Welcome")
         </article>

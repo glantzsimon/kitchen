@@ -5,10 +5,10 @@
     var metaLocaleName = CultureInfo.CurrentUICulture.GetMetaLocaleName();
     var languageName = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower();
     var keywords = ViewBag.Keywords ?? Dictionary.Keywords;
-    var mainTitle = (ViewBag.Title ?? string.Empty).Replace(Dictionary.GlantzSoftwareConsulting, string.Empty).Trim();
-    var pageTitle = string.IsNullOrEmpty(mainTitle) ? Dictionary.GlantzSoftwareConsulting : $"{mainTitle} &raquo; {Dictionary.GlantzSoftwareConsulting}";
-    var title = Html.Raw($"{pageTitle} &raquo; {Dictionary.GlantzSoftwareConsulting}");
-    var description = Html.Raw(ViewBag.MetaDescription ?? Dictionary.GlantzSoftwareConsulting);
+    var mainTitle = (ViewBag.Title ?? string.Empty).Replace(Dictionary.WolfKitchenManager, string.Empty).Trim();
+    var pageTitle = string.IsNullOrEmpty(mainTitle) ? Dictionary.WolfKitchenManager : $"{mainTitle} &raquo; {Dictionary.WolfKitchenManager}";
+    var title = Html.Raw($"{pageTitle} &raquo; {Dictionary.WolfKitchenManager}");
+    var description = Html.Raw(ViewBag.MetaDescription ?? Dictionary.WolfKitchenManager);
 }
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />
     <meta property="og:url" content="/" />
-    <meta property="og:site_name" content="@Dictionary.GlantzSoftwareConsulting" />
+    <meta property="og:site_name" content="@Dictionary.WolfKitchenManager" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="@description" />
     <meta name="twitter:title" content="@title" />

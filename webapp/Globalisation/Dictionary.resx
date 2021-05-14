@@ -364,4 +364,10 @@
   <data name="GenderLabel" xml:space="preserve">
     <value>Gender</value>
   </data>
+  <data name="Here" xml:space="preserve">
+    <value>Here</value>
+  </data>
+  <data name="WolfKitchenManager" xml:space="preserve">
+    <value>Wolf Kitchen Manager</value>
+  </data>
 </root>
